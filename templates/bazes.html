@@ -1,0 +1,39 @@
+<!-- Autors: Adams Pastars ap25167 -->
+<!-- SKATS (View) - bāzes veidne, ko izmanto visas lapas -->
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- IMGUR -->
+    <meta name="referrer" content="no-referrer">
+    <title>Filmu katalogs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stils.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🎬 Filmu katalogs</h1>
+        <nav>
+            <a href="{{ url_for('film.saraksts') }}">Saraksts</a>
+            <a href="{{ url_for('film.pievienot') }}">+ Pievienot filmu</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Paziņojumi (piem., "Filma pievienota") -->
+        {% with zinas = get_flashed_messages() %}
+            {% if zinas %}
+                {% for zina in zinas %}
+                    <div class="zina">{{ zina }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block saturs %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Autors: Adams Pastars ap25167</p>
+    </footer>
+</body>
+</html>
