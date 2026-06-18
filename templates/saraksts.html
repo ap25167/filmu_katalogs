@@ -1,0 +1,37 @@
+<!-- Autors: Adams Pastars ap25167 -->
+<!-- SKATS (View) - filmu saraksta lapa -->
+{% extends "bazes.html" %}
+
+{% block saturs %}
+    <!-- Meklēšanas forma -->
+    <form class="meklet-forma" method="get" action="{{ url_for('film.saraksts') }}">
+        <input type="text" name="meklet" placeholder="Meklēt pēc nosaukuma..." value="{{ meklet }}">
+        <button type="submit">Meklēt</button>
+    </form>
+
+    {% if filmas %}
+        <div class="kartites">
+            {% for film in filmas %}
+                <div class="kartite">
+                    {% if film.attels %}
+                        <img src="{{ film.attels }}" alt="{{ film.nosaukums }}">
+                    {% else %}
+                        <div class="nav-attela">Nav attēla</div>
+                    {% endif %}
+                    <div class="kartite-saturs">
+                        <h3>{{ film.nosaukums }}</h3>
+                        <p class="zanrs">{{ film.zanrs }} · {{ film.gads }}</p>
+                        <p class="vertejums">⭐ {{ film.vertejums }}</p>
+                        <div class="darbibas">
+                            <a class="poga-labot" href="{{ url_for('film.labot', film_id=film.id) }}">Labot</a>
+                            <a class="poga-dzest" href="{{ url_for('film.dzest', film_id=film.id) }}"
+                               onclick="return confirm('Vai tiešām dzēst šo filmu?')">Dzēst</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="tukss">Nav neviena filma. Pievieno pirmo!</p>
+    {% endif %}
+{% endblock %}

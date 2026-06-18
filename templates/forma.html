@@ -1,0 +1,31 @@
+<!-- Autors: Adams Pastars ap25167 -->
+<!-- SKATS (View) - forma filmas pievienošanai un labošanai (viena forma abiem) -->
+{% extends "bazes.html" %}
+
+{% block saturs %}
+    <h2>{% if film %}Labot filmu{% else %}Pievienot jaunu filmu{% endif %}</h2>
+
+    <form class="film-forma" method="post">
+        <label>Nosaukums</label>
+        <input type="text" name="nosaukums" required
+               value="{{ film.nosaukums if film else '' }}">
+
+        <label>Žanrs</label>
+        <input type="text" name="zanrs" required
+               value="{{ film.zanrs if film else '' }}">
+
+        <label>Gads</label>
+        <input type="number" name="gads" required min="1888" max="2026"
+               value="{{ film.gads if film else '' }}">
+
+        <label>Vērtējums (0–10)</label>
+        <input type="number" name="vertejums" required step="0.1" min="0" max="10"
+               value="{{ film.vertejums if film else '' }}">
+
+        <label>Attēla saite (URL)</label>
+        <input type="url" name="attels" placeholder="https://..."
+               value="{{ film.attels if film else '' }}">
+
+        <button type="submit">Saglabāt</button>
+    </form>
+{% endblock %}
