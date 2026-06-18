@@ -14,9 +14,9 @@ pēc **MVC (Model-View-Controller)** dizaina šablona.
 - Meklē filmu pēc nosaukuma
 
 ## MVC struktūra
-- **Model** (`models/film_model.py`) — darbs ar datu bāzi (SQLite)
-- **View** (`templates/`) — HTML lapas, ko redz lietotājs
-- **Controller** (`controllers/film_controller.py`) — apstrādā pieprasījumus, savieno modeli un skatu
+- **Model** (`models/film_model.py`) - darbs ar datu bāzi (SQLite)
+- **View** (`templates/`) - HTML lapas, ko redz lietotājs
+- **Controller** (`controllers/film_controller.py`) - apstrādā pieprasījumus, savieno modeli un skatu
 
 ## Kā palaist
 
